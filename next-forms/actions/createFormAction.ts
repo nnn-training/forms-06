@@ -4,10 +4,11 @@ import { auth } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { createFormSchema } from '@/schemas/createSchema';
 import type { QuestionInputType } from '@/schemas/createSchema';
+import type { OperationResultWithFormId } from '@/lib/operationResultType';
 
 export async function createFormAction(
   data: unknown,
-): Promise<object> {
+): Promise<OperationResultWithFormId> {
 
   const parsed = createFormSchema.safeParse(data);
   if (!parsed.success) {

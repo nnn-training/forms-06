@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import dateFormat from '@/lib/dateFormat';
 import prisma from '@/lib/prisma';
 
@@ -24,6 +26,12 @@ export default async function TopPage() {
           <p>更新日時：{formattedUpdatedAt}</p>
         )}
         <p className="mb-3">作成者：{form.user.username}</p>
+        <Link
+          href={`/forms/${form.formId}`}
+          className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-full"
+        >
+          回答する
+        </Link>
       </div>
     );
   });

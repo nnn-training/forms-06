@@ -1,13 +1,5 @@
 import { z } from 'zod';
-
-// 入力欄で共通のバリデーション
-const nonEmptyString = (field: string) =>
-  z
-    .string({ message: `${field}を入力してください。` })
-    .max(255, { message: `${field}は255文字以内で入力してください。` })
-    .refine((v) => Boolean(v.trim()), {
-      message: `${field}を入力してください。`,
-    });
+import { nonEmptyString } from '@/schemas/_utils';
 
 // 選択肢のスキーマ
 export const choiceInputSchema = z.object({

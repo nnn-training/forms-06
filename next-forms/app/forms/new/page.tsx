@@ -52,8 +52,28 @@ export default function CreatePage() {
 
   const onSubmit = async (data: CreateFormType) => {
     const result = await createFormAction(data);
-    console.log(result);
-    router.push('/');
+    if (!result.success) {
+      let errorMessage = '';
+      switch (result.error) {
+        case 'VALIDATION_ERROR':
+          errorMessage = '入力に誤りがあります。';
+          break;
+        case 'LOGIN_REQUIRED':
+          errorMessage = 'ログインが必要です。';
+          break;
+        case 'USER_NOT_FOUND':
+          errorMessage = 'ユーザが見つかりません。';
+          break;
+        case 'ACTION_FAILED':
+          errorMessage = 'フォームの作成に失敗しました。';
+          break;
+      }
+      console.error(errorMessage);
+      router.push('/');
+    } else {
+      console.log('フォームを作成しました。');
+      router.push(`/forms/${result.formId}`);
+    }
   };
 
   return (
