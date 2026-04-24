@@ -61,7 +61,7 @@ export default function AnswerForm(props: Props) {
       router.push('/');
     } else {
       console.log('回答を送信しました。');
-      router.push(`/`); // TODO: 集計結果ページへ遷移させる
+      router.push(`/forms/${form.formId}/responses`);
     }
   };
 

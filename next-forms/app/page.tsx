@@ -32,6 +32,12 @@ export default async function TopPage() {
         >
           回答する
         </Link>
+        <Link
+          href={`/forms/${form.formId}/responses`}
+          className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full"
+        >
+          結果を見る
+        </Link>
       </div>
     );
   });
